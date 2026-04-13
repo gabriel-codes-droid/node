@@ -1,0 +1,20 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Node.js learning code ",
+  "homepage": "https://github.com/gabriel-codes-droid/node#readme",
+  "bugs": {
+    "url": "https://github.com/gabriel-codes-droid/node/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabriel-codes-droid/node.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
