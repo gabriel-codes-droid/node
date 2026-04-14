@@ -6,13 +6,13 @@
   "bugs": {
     "url": "https://github.com/gabriel-codes-droid/node/issues"
   },
+  "type":"module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabriel-codes-droid/node.git"
   },
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
