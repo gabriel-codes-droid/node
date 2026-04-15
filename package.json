@@ -6,7 +6,7 @@
   "bugs": {
     "url": "https://github.com/gabriel-codes-droid/node/issues"
   },
-  "type":"module",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabriel-codes-droid/node.git"
@@ -15,6 +15,9 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js "
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
