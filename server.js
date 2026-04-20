@@ -1,6 +1,9 @@
-import http from 'http'
+import http from 'http';
+import fs from 'fs/promises';
+import url from 'url'
 const PORT = process.env.PORT;
 
+const __filename =url.fileURLToPath(import.meta.url);
 const server = http.createServer((req,res)=>{
 // res.setHeader('Content-Type','text/html')
 // res.statusCode =404 ;
