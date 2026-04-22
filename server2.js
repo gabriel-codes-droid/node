@@ -18,7 +18,7 @@ const user =users.find((user)=>user.id===parseInt(id));
 
 if (user){
     res.setHeader('Content-Type','application/json');
-    res.write(JSON.stringify({id:1, name : 'John Doe'}));
+    res.write(JSON.stringify(user));
     res.end();
 } else{
   res.setHeader('Content-Type','application/json');
@@ -29,7 +29,7 @@ if (user){
 }
 else{
     res.setHeader('Content-Type','application/json');
-    res.write(JSON.stringify({message: 'Route not found'}));
+    res.write(JSON.stringify({message: 'User not found'}));
     res.end(); 
 }
 });
