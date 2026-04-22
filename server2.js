@@ -6,8 +6,13 @@ const users =[
     {id: 2, name :'Jim Doe'},
     {id: 3, name :'Jane Doe'},
 ];
+const logger =(req,res,next)=>{
+    console.log(`${req.method} ${req.url}`);
+    next();
+}
 const server =createServer((req,res)=>{
-if (req.url==='/api/users'&& req.method === 'GET'){
+    logger (req,res ,()=>{
+        if (req.url==='/api/users'&& req.method === 'GET'){
     res.setHeader('Content-Type','application/json');
     res.write(JSON.stringify(users));
     res.end();
@@ -29,6 +34,9 @@ else{
     res.write(JSON.stringify({message: 'User not found'}));
     res.end(); 
 }
+    }
+)
+
 });
 server.listen(PORT,()=>{
     console.log(`Server running on port ${PORT}`)
