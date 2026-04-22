@@ -15,16 +15,13 @@ if (req.url==='/api/users'&& req.method === 'GET'){
 else if (req.url.match(/\/api\/users\/([0-9]+)/) &&req.method==='GET'){
 const id =req.url.split('/')[3];
 const user =users.find((user)=>user.id===parseInt(id));
-
+res.setHeader('Content-Type','application/json');
 if (user){
-    res.setHeader('Content-Type','application/json');
     res.write(JSON.stringify(user));
-    res.end();
 } else{
-  res.setHeader('Content-Type','application/json');
     res.write(JSON.stringify({message: 'Route not found'}));
-    res.end(); 
 }
+res.end();
 
 }
 else{
