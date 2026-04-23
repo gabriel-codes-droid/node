@@ -24,7 +24,7 @@ res.setHeader('Content-Type','application/json');
 if (user){
     res.write(JSON.stringify(user));
 } else{
-    res.write(JSON.stringify({message: 'Usernot found'}));
+    res.write(JSON.stringify({message: 'User not found'}));
 }
 res.end();
 
