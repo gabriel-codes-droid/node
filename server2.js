@@ -24,12 +24,14 @@ res.setHeader('Content-Type','application/json');
 if (user){
     res.write(JSON.stringify(user));
 } else{
+    res.statusCode = 404 ;
     res.write(JSON.stringify({message: 'User not found'}));
 }
 res.end();
 
 }else{
     res.setHeader('Content-Type','application/json');
+    res.statusCode = 404 ;
     res.write(JSON.stringify({message: 'Route not found'}));
     res.end(); 
 }
