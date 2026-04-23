@@ -24,20 +24,18 @@ res.setHeader('Content-Type','application/json');
 if (user){
     res.write(JSON.stringify(user));
 } else{
-    res.write(JSON.stringify({message: 'Route not found'}));
+    res.write(JSON.stringify({message: 'Usernot found'}));
 }
 res.end();
 
-}
-else{
+}else{
     res.setHeader('Content-Type','application/json');
-    res.write(JSON.stringify({message: 'User not found'}));
+    res.write(JSON.stringify({message: 'Route not found'}));
     res.end(); 
 }
-    }
-)
+    });
 
 });
 server.listen(PORT,()=>{
     console.log(`Server running on port ${PORT}`)
-}) 
+});
