@@ -1,5 +1,5 @@
 import { createServer} from 'http'
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 
 const users =[
     {id: 1, name :'John Doe'},
@@ -17,7 +17,7 @@ const jsonMiddleware = (req,res ,next)=>{
 }
 
 //Route handler for Get /api/users
-const getUsetrHandler = (req,res)=>{
+const getUserHandler = (req,res)=>{
     res.write(JSON.stringify(users));
     res.end();
 }
@@ -35,36 +35,25 @@ res.end();
 }
 //Not found Handler
 const notFoundHandler =(req,res)=>{
+    res.statusCode = 404;
     res.write(JSON.stringify({message: 'Route not found'}));
     res.end(); 
 }
 
 const server =createServer((req,res)=>{
     logger (req,res ,()=>{
-        if (req.url==='/api/users'&&
-             req.method === 'GET'){
-    res.setHeader('Content-Type','application/json');
-    res.write(JSON.stringify(users));
-    res.end();
-}
-else if (req.url.match(/\/api\/users\/([0-9]+)/) &&req.method==='GET'){
-const id =req.url.split('/')[3];
-const user =users.find((user)=>user.id===parseInt(id));
-res.setHeader('Content-Type','application/json');
-if (user){
-    res.write(JSON.stringify(user));
-} else{
-    res.statusCode = 404 ;
-    res.write(JSON.stringify({message: 'User not found'}));
-}
-res.end();
+       jsonMiddleware(req,res ,()=>{
+        if (req.url === '/api/users' && req.method === 'GET'){
+            getUserHandler(req,res);
+        }
+        else if (req.url.match(/\/api\/users\/([0-9]+)/) &&
+         req.method === 'GET'){
+            getUsersByHandler(req,res);
+        }else {
+            notFoundHandler(req,res);
+        }
 
-}else{
-    res.setHeader('Content-Type','application/json');
-    res.statusCode = 404 ;
-    res.write(JSON.stringify({message: 'Route not found'}));
-    res.end(); 
-}
+       }) ;
     });
 
 });
