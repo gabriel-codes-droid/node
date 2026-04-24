@@ -44,6 +44,7 @@ const createUserHandler = (req,res)=>{
         users.push(newUser);
         res.statusCode =201;
         res.write(JSON.stringify(newUser));
+        res.end();
     });
 }
 //Not found Handler
