@@ -15,3 +15,11 @@ myEmitter.on('goodbye',goodbyeHandler);
 //Emit events,
 myEmitter.emit('greet' , 'John');
 myEmitter.emit('goodbye' , 'John');
+
+//Error handling
+myEmitter.on('error',(err)=>{
+    console.log('An Error Occured:',err);
+});
+
+//Simulate error 
+myEmitter.emit('error',new Error('Something went wrong'))
